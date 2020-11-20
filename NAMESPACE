@@ -1,0 +1,5 @@
+export(weighted_mode,
+       complete_quarters, complete_years,
+       distinct, allNA, "%c%", "%n%", "%u%", "%==%", "%-%")
+S3method(distinct, default)
+S3method(distinct, data.frame)

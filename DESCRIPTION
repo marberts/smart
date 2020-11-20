@@ -1,0 +1,12 @@
+Package: smart
+Title: Steve Martin's Assorted R Toolbox
+Version: 0.1.0
+Authors@R: c(
+    person("Steve", "Martin", role = c("aut", "cre", "cph"), email = "stevemartin041@gmail.com")
+    )
+Description: A collection of functions for R that I sometimes find useful.
+Depends: R (>= 3.5)
+Imports: stats
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
