@@ -8,6 +8,11 @@ stopifnot(
     isFALSE(weighted_mode(c(T, F, T), c(1, 5, 1)))
     # NAs
     identical(weighted_mode(c(1, 2, 2, NA, NA, NA)), NA_real_)
+    weighted_mode(c(1, 1, NA)) == 1
+    is.na(weighted_mode(c(1, 1, 2, NA)))
+    weighted_mode(c(1, 2, NA), c(4, 2, 1)) == 1
+    is.na(weighted_mode(c(1, 2, NA), c(4, 2, 2)))
+    is.na(weighted_mode(c(1, 1, 2, 2, NA)))
     weighted_mode(c(1, 2, 2, NA, NA, NA), na.rm = TRUE) == 2
     identical(weighted_mode(c(T, F, T), c(1, NA, 1)), NA)
     weighted_mode(c(T, F, T), c(1, NA, 1), na.rm = TRUE)
