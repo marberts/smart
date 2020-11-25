@@ -3,3 +3,4 @@ export(weighted_mode,
        distinct, allNA, "%c%", "%n%", "%u%", "%==%", "%-%")
 S3method(distinct, default)
 S3method(distinct, data.frame)
+importFrom(stats, setNames)

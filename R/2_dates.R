@@ -4,9 +4,9 @@ complete_periods <- function(period = c("quarter", "year")) {
   function(x) {
     x <- as.Date(x)
     if (!length(x)) return(logical(0))
-    if (allNA(x)) return(rep(NA, length(x)))
+    if (allNA(x)) return(rep.int(NA, length(x)))
     x <- lapply(list(period, "month"), cut, x = x, labels = FALSE)
-    stats::ave(x[[2]], x[[1]], FUN = distinct) == (3 + 9 * (period == "year"))
+    generalized_ave(distinct)(x[[2]], x[[1]]) == (3 + 9 * (period == "year"))
   }
 }
 

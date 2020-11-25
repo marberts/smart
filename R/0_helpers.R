@@ -23,3 +23,26 @@ is.subset <- function(x, y) !anyNA(match(as.vector(x), as.vector(y)))
 `%u%` <- function(x, y) union(x, y)
 
 `%-%` <- function(x, y) setdiff(x, y)
+
+#---- Generalized ave ----
+generalized_ave <- function(fun) {
+  fun <- match.fun(fun)
+  # return function
+  function(x, ...) {
+    stopifnot("'x' must be an atomic vector" = is.atomic(x))
+    res <- setNames(rep.int(NA, length(x)), names(x))
+    g <- if (missing(...)){
+      as.factor(rep(1L, length(x)))
+    } else {
+      interaction(...)
+    }
+    split(res, g) <- lapply(split(x, g), fun)
+    res
+  }
+}
+
+#---- Integer digits ----
+integer_digits <- function(x) {
+  x <- abs(trunc(as.numeric(x)))
+  floor(log10(pmax.int(x, 1))) + 1
+}

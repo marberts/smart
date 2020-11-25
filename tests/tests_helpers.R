@@ -46,6 +46,19 @@ stopifnot(
     !A %c% NULL
     NULL %c% A
     A %c% A
+    integer_digits(-1) == 1
+    integer_digits(-1.5) == 1
+    integer_digits(0) == 1
+    integer_digits(0.1) == 1
+    integer_digits(-0.9) == 1
+    integer_digits(100) == 3
+    integer_digits(100.5) == 3
+    identical(integer_digits(integer(0)), numeric(0))
+    all.equal(generalized_ave(median)(1:10), rep(median(1:10), 10))
+    all.equal(generalized_ave(sum)(setNames(nm = 1:10)), setNames(rep(55, 10), 1:10))
+    all.equal(generalized_ave(mean)(1:10, rep(letters[1:2], 5)), ave(1:10, rep(letters[1:2], 5)))
+    all.equal(generalized_ave(complete_quarters)(as.Date(c("2018-01-01", "2018-02-04", "2018-03-07", "2018-03-19")), c(1, 1, 1, 2)),
+              c(TRUE, TRUE, TRUE, FALSE))
   },
   local = getNamespace("smart")
 )
