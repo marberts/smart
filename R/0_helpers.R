@@ -28,16 +28,13 @@ is.subset <- function(x, y) !anyNA(match(as.vector(x), as.vector(y)))
 generalized_ave <- function(fun) {
   fun <- match.fun(fun)
   # return function
-  function(x, ...) {
-    stopifnot("'x' must be an atomic vector" = is.atomic(x))
-    res <- setNames(rep.int(NA, length(x)), names(x))
-    g <- if (missing(...)){
-      as.factor(rep(1L, length(x)))
-    } else {
-      interaction(...)
-    }
-    split(res, g) <- lapply(split(x, g), fun)
-    res
+  function(x, f = rep(1L, length(x)), ...) {
+    stopifnot("'x' must be an atomic vector" = is.atomic(x),
+              "'f' must be an atomic vector" = is.atomic(f),
+              "'x' and 'f' must be the same length" = length(x) == length(f))
+    f <- as.factor(f)
+    res <- lapply(split(x, f), fun, ...)
+    setNames(unsplit(res, f), names(x))
   }
 }
 

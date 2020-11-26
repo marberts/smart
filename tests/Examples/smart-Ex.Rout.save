@@ -49,6 +49,35 @@ Type 'q()' to quit R.
 > 
 > 
 > cleanEx()
+> nameEx("generalized_ave")
+> ### * generalized_ave
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: generalized ave
+> ### Title: Generalized ave
+> ### Aliases: generalized_ave
+> 
+> ### ** Examples
+> 
+> generalized_ave(mean)(1:10, rep(1:2, 5)) # same as stats::ave(1:10, rep(1:2, 5))
+ [1] 5 6 5 6 5 6 5 6 5 6
+> 
+> generalized_ave(sum)(1:10, rep(1:2, 5)) # same as stats::ave(1:10, rep(1:2, 5), FUN = sum)
+ [1] 25 30 25 30 25 30 25 30 25 30
+> 
+> generalized_ave(function(x) x == max(x))(1:10, rep(1:2, 5)) # returns a logical
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE
+> 
+> # use interaction to group by multiple factors
+> f <- rep(1:2, 5)
+> g <- rep(1:5, 2)
+> generalized_ave(mean)(1:10, interaction(f, g)) # same as stats::ave(1:10, f, g)
+ [1]  1  2  3  4  5  6  7  8  9 10
+> 
+> 
+> 
+> cleanEx()
 > nameEx("helpers")
 > ### * helpers
 > 
@@ -57,6 +86,7 @@ Type 'q()' to quit R.
 > ### Name: little helpers
 > ### Title: Little helpers
 > ### Aliases: distinct distinct.default distinct.data.frame allNA
+> ###   integer_digits
 > 
 > ### ** Examples
 > 
@@ -75,6 +105,12 @@ Type 'q()' to quit R.
 > 
 > getS3method("distinct", "default")(mtcars) # none of the colums are identical
 [1] 11
+> 
+> integer_digits(-1.5) # same as nchar(abs(trunc(-1.5)))
+[1] 1
+> 
+> integer_digits(Inf) # nchar(abs(trunc(Inf))) returns 3
+[1] Inf
 > 
 > 
 > 
@@ -132,6 +168,14 @@ Warning in weighted_mode(c("a", "b", "c", "b", "c")) :
   mode is not unique
 [1] "b" "c"
 > 
+> # Notice that the mode is known despite the NA
+> weighted_mode(c(1, 1, 1, 2, NA))
+[1] 1
+> 
+> # But this isn't always the case
+> weighted_mode(c(1, 1, 2, NA))
+[1] NA
+> 
 > 
 > 
 > ### * <FOOTER>
@@ -139,7 +183,7 @@ Warning in weighted_mode(c("a", "b", "c", "b", "c")) :
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  0.184 0.03 0.224 0 0 
+Time elapsed:  0.203 0.013 0.216 0 0 
 > grDevices::dev.off()
 null device 
           1 

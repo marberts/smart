@@ -1,5 +1,5 @@
 #---- Mode ----
-weighted_mode <- function(x, w = rep(1, length(x)), na.rm = FALSE) {
+weighted_mode <- function(x, w = rep(1L, length(x)), na.rm = FALSE) {
   stopifnot("'x' must be an atomic vector" = is.atomic(x),
             "'w' must be a numeric vector" = is.numeric(w),
             "'x' and 'w' must be the same length" = length(x) == length(w),

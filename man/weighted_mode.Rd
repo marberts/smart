@@ -36,4 +36,10 @@ weighted_mode(c(TRUE, FALSE, TRUE, FALSE), 1:4)
 
 # Two modes
 weighted_mode(c("a", "b", "c", "b", "c"))
+
+# Notice that the mode is known despite the NA
+weighted_mode(c(1, 1, 1, 2, NA))
+
+# But this isn't always the case
+weighted_mode(c(1, 1, 2, NA))
 }
