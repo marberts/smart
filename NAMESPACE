@@ -4,4 +4,3 @@ export(weighted_mode,
        generalized_ave)
 S3method(distinct, default)
 S3method(distinct, data.frame)
-importFrom(stats, setNames)

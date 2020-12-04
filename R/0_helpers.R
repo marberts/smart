@@ -1,6 +1,11 @@
 #---- Internal helpers ----
 is_T_or_F <- function(x) length(x) == 1 && is.logical(x) && !is.na(x)
 
+all_same_length <- function(...) {
+  res <- vapply(list(...), length, numeric(1))
+  all(res == res[1])
+}
+
 #---- Distinct ----
 distinct <- function(x, ...) UseMethod("distinct")
 
@@ -34,7 +39,7 @@ generalized_ave <- function(fun) {
               "'x' and 'f' must be the same length" = length(x) == length(f))
     f <- as.factor(f)
     res <- lapply(split(x, f), fun, ...)
-    setNames(unsplit(res, f), names(x))
+    structure(unsplit(res, f), names = names(x))
   }
 }
 
