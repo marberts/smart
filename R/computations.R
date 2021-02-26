@@ -1,9 +1,8 @@
 #---- Mode ----
 weighted_mode <- function(x, w = rep(1L, length(x)), na.rm = FALSE) {
-  stopifnot("'x' must be an atomic vector" = is.atomic(x),
-            "'w' must be a numeric vector" = is.numeric(w),
-            "'x' and 'w' must be the same length" = length(x) == length(w),
-            "'na.rm' must be TRUE or FALSE" = is_T_or_F(na.rm))
+  if (length(x) != length(w)) {
+    stop("'x' and 'w' must be the same length")
+  }
   if (na.rm) {
     if (anyNA(x) || anyNA(w)) { # nested if to prevent anyNA(w) getting called twice
       keep <- !(is.na(x) | is.na(w))

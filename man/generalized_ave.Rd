@@ -6,7 +6,7 @@ Generalized ave
 }
 
 \description{
-A generalization of \code{\link[stats:ave]{ave()}} that is easier to use with functions other than \code{\link[base:mean]{mean()}}.
+A generalization of \code{\link[=ave]{ave()}} that is easier to use with functions other than \code{\link[=mean]{mean()}}.
 }
 
 \usage{
@@ -24,18 +24,17 @@ A function
 
 where \code{x} is a vector, \code{f} is a factor that groups \code{x}, and \code{...} are other arguments to pass to \code{fun}.
 
-\code{x} serves the same role as in \code{\link[stats:ave]{ave()}}, with \code{f} replacing \code{...} so that there is a way to pass further arguments to \code{fun}. Unlike \code{\link[stats:ave]{ave()}}, the type of the return value is determined by the return value of \code{fun}, which may not be the same as \code{x}.
+\code{x} serves the same role as in \code{\link[=ave]{ave()}}, with \code{f} replacing \code{...} so that there is a way to pass further arguments to \code{fun}. Unlike \code{\link[=ave]{ave()}}, the type of the return value is determined by the return value of \code{fun}, which may not be the same as \code{x}.
 }
 
 \details{
-This is a function factory that returns a function that behaves much like \code{\link[stats:ave]{ave()}}, except that it works more consistently with functions other than \code{\link[base:mean]{mean()}}. The function returned by \code{generalized_ave()}:
+This is a function factory that returns a function that behaves much like \code{\link[=ave]{ave()}}, except that it works more consistently with functions other than \code{\link[=mean]{mean()}}. The function returned by \code{generalized_ave()}:
 \enumerate{
-\item{Checks its arguments, which is suggested in the documentation for \code{\link[stats:ave]{ave()}} but not actually done;}
 \item{Allows further (named) arguments to be passed to \code{fun};}
 \item{Bases the return value off of \code{fun}, instead of \code{x}.}
 }
 
-Unlike \code{\link[stats:ave]{ave()}}, the names for \code{x} are the only attributes of \code{x} that are kept.
+Unlike \code{\link[=ave]{ave()}}, the names for \code{x} are the only attributes of \code{x} that are kept.
 }
 
 \examples{

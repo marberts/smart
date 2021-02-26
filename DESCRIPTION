@@ -1,6 +1,6 @@
 Package: smart
 Title: Steve Martin's Assorted R Toolbox
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: c(
     person("Steve", "Martin", role = c("aut", "cre", "cph"), email = "stevemartin041@gmail.com")
     )

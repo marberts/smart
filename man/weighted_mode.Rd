@@ -16,7 +16,7 @@ weighted_mode(x, w = rep(1, length(x)), na.rm = FALSE)
 
 \item{w}{A numeric vector of weights, the same length as \code{x}. The default gives each element of \code{x} equal weight.}
 
-\item{na.rm}{Should missing values in \code{x} be removed?}
+\item{na.rm}{Should missing values in \code{x} and \code{w} be removed?}
 }
 
 \value{

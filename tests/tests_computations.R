@@ -4,6 +4,7 @@ stopifnot(
     weighted_mode(letters[c(1, 2, 2, 3)]) == "b"
     weighted_mode(c(1, 1, 2, 3)) == 1
     weighted_mode(c(T, F, T))
+    isFALSE(weighted_mode(c(T, F, T), c(F, T, F)))
     weighted_mode(letters[c(1, 2, 2, 3)], c(3, 1, 1, 1)) == "a"
     isFALSE(weighted_mode(c(T, F, T), c(1, 5, 1)))
     # NAs

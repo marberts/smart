@@ -1,6 +1,4 @@
-export(distinct, allNA, "%c%", "%n%", "%u%", "%==%", "%-%", integer_digits, generalized_ave,
+export(distinct, allNA, integer_digits, generalized_ave,
+       "%c%", "%n%", "%u%", "%==%", "%-%", "%(-)%",
        weighted_mode,
-       complete_quarters, complete_years,
-       price_relative)
-S3method(distinct, default)
-S3method(distinct, data.frame)
+       complete_quarters, complete_years)
